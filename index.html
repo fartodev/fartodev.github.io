@@ -9,13 +9,28 @@
     
     <style>
         :root {
-            --bg-color: #0a0a0c;
+            --bg-color: #0d0b14;
+            --accent-purple: #a855f7;
             --accent-blue: #3bccff;
             --accent-red: #ff4b5c;
             --text-main: #ffffff;
-            --text-dim: #a0a0a0;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --safe-padding: 20px;
+            --text-dim: #b4b0c5;
+            --card-bg: rgba(168, 85, 247, 0.08);
+            --safe-padding: 24px;
+        }
+
+        * { cursor: none; }
+
+        #cursor {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--accent-purple);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 0 15px var(--accent-purple);
+            transition: transform 0.1s ease;
         }
 
         body, html {
@@ -25,9 +40,9 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
-        /* Hero Section */
         .hero {
             position: relative;
             width: 100%;
@@ -37,19 +52,17 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 60px var(--safe-padding); /* Side padding added */
+            padding: 60px var(--safe-padding);
             box-sizing: border-box;
+            background: radial-gradient(circle at center, #1a162b 0%, #0d0b14 100%);
         }
 
         .video-bg {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover;
             z-index: -1;
-            opacity: 0.3;
+            opacity: 0.2;
         }
 
         .brand-header {
@@ -61,9 +74,7 @@
 
         .studio-logo {
             width: clamp(40px, 6vw, 70px);
-            height: auto;
-            filter: brightness(0) invert(1);
-            opacity: 0.9;
+            filter: brightness(0) invert(1) drop-shadow(0 0 8px var(--accent-purple));
         }
 
         h1 {
@@ -76,13 +87,13 @@
 
         .tagline {
             font-size: 0.85rem;
-            color: var(--text-dim);
+            color: var(--accent-purple);
             letter-spacing: 4px;
             text-transform: uppercase;
             margin-bottom: 40px;
+            font-weight: 700;
         }
 
-        /* Vertical Game Stack */
         .featured-games {
             display: flex;
             flex-direction: column;
@@ -96,87 +107,108 @@
             display: flex;
             align-items: center;
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.2);
             border-radius: 20px;
             padding: 16px 24px;
             text-decoration: none;
             color: white;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s ease;
             backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
             width: 100%;
             box-sizing: border-box;
         }
 
         .play-card.primary {
             padding: 20px 28px;
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(168, 85, 247, 0.4);
         }
 
         .play-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-5px);
+            background: rgba(168, 85, 247, 0.15);
         }
 
-        .play-card.gp:hover { border-color: var(--accent-blue); box-shadow: 0 0 30px rgba(60, 204, 255, 0.2); }
-        .play-card.itch:hover { border-color: var(--accent-red); box-shadow: 0 0 30px rgba(255, 75, 92, 0.2); }
+        .play-card.gp:hover { border-color: var(--accent-blue); box-shadow: 0 0 20px rgba(60, 204, 255, 0.2); }
+        .play-card.itch:hover { border-color: var(--accent-red); box-shadow: 0 0 20px rgba(255, 75, 92, 0.2); }
 
-        .card-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            margin-right: 18px;
-            object-fit: cover;
-        }
-
+        .card-icon { width: 50px; height: 50px; border-radius: 12px; margin-right: 18px; }
         .primary .card-icon { width: 60px; height: 60px; }
         .card-text { text-align: left; flex-grow: 1; }
         .card-title { display: block; font-weight: 900; font-size: 1.15rem; }
-        .primary .card-title { font-size: 1.3rem; }
-        .card-subtitle { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-top: 2px; }
-        .gp-text { color: var(--accent-blue); }
-        .itch-text { color: var(--accent-red); }
+        .card-subtitle { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
 
-        /* Container & Content */
         .container { 
-            max-width: 900px; 
+            max-width: 1000px; 
             margin: 0 auto; 
-            padding: 100px var(--safe-padding); /* Side padding added */
+            padding: 80px var(--safe-padding);
             box-sizing: border-box;
         }
 
-        .about-section { text-align: center; margin-bottom: 100px; }
-        .about-section p { font-size: 1.15rem; line-height: 1.8; color: var(--text-dim); max-width: 700px; margin: 0 auto; }
-        .highlight { color: var(--text-main); font-weight: 700; }
-        
-        h2 { font-size: 2rem; margin-bottom: 50px; text-align: center; letter-spacing: -1px; text-transform: uppercase; }
+        h2 { 
+            font-size: 1.8rem; 
+            margin-bottom: 40px; 
+            text-align: center; 
+            text-transform: uppercase; 
+            color: var(--accent-purple);
+            letter-spacing: 2px;
+        }
 
+        /* Enhanced Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .skill-box {
+            background: rgba(168, 85, 247, 0.03);
+            padding: 30px;
+            border-radius: 24px;
+            border: 1px solid rgba(168, 85, 247, 0.1);
+        }
+
+        .skill-box h4 { 
+            margin-top: 0; 
+            color: var(--text-main); 
+            text-transform: uppercase; 
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .skill-list { list-style: none; padding: 0; margin: 0; color: var(--text-dim); font-size: 0.85rem; }
+        .skill-list li { margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;}
+        .level { color: var(--accent-purple); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+
+        /* Projects Grid */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .project-item {
             background: var(--card-bg);
             padding: 35px;
             border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(168, 85, 247, 0.1);
             transition: 0.3s;
         }
-        .project-item:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); transform: translateY(-5px); }
-        .project-item h3 { margin: 0 0 12px 0; color: var(--accent-blue); font-size: 1.25rem; }
+
+        .project-item:hover { border-color: var(--accent-purple); transform: translateY(-5px); }
+        .project-item h3 { margin: 0 0 12px 0; color: var(--accent-purple); font-size: 1.2rem; }
         .project-item p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; }
 
-        .socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; margin-top: 80px; padding-bottom: 100px; }
-        .social-link { color: var(--text-dim); text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; transition: 0.3s; letter-spacing: 1px; }
-        .social-link:hover { color: var(--accent-blue); }
+        .socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; padding: 80px 0; }
+        .social-link { color: var(--text-dim); text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; transition: 0.3s; }
+        .social-link:hover { color: var(--accent-purple); }
 
         @media (max-width: 600px) {
-            .brand-header { gap: 12px; }
             h1 { font-size: 2.8rem; }
-            .play-card { padding: 14px 20px; }
         }
     </style>
 </head>
 <body>
+
+    <div id="cursor"></div>
 
     <section class="hero">
         <video autoplay muted loop playsinline class="video-bg">
@@ -194,46 +226,68 @@
                 <img src="icon.png" alt="Flyter" class="card-icon">
                 <div class="card-text">
                     <span class="card-title">FLYTER</span>
-                    <span class="card-subtitle gp-text">Get it on Google Play</span>
+                    <span class="card-subtitle" style="color:#3bccff">Live on Google Play</span>
                 </div>
-                <svg viewBox="0 0 512 512" width="22" fill="#3bccff"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-10.3 18-28.5-1.2-40.8zM325.3 277.7l-60.1 60.1L104.6 499l280.8-161.2-60.1-60.1z"/></svg>
             </a>
 
             <a href="https://fartodev.itch.io/flight-fury" class="play-card itch">
                 <img src="FlightFuryIcon.png" alt="Flight Fury" class="card-icon">
                 <div class="card-text">
                     <span class="card-title">FLIGHT FURY</span>
-                    <span class="card-subtitle itch-text">Download via Itch.io</span>
+                    <span class="card-subtitle" style="color:#ff4b5c">Download on Itch.io</span>
                 </div>
-                <svg viewBox="0 0 448 512" width="20" fill="#ff4b5c"><path d="M7.1 230L114.5 329.8c14.3 13.2 14.3 35 0 48.2L7.1 477.8c-11.8 11-30.8 2.6-30.8-13.6V243.6c0-16.2 19-24.6 30.8-13.6zM320 256c0 17.7-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32zm128 0c0 17.7-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32z"/></svg>
             </a>
         </div>
     </section>
 
     <div class="container">
-        <section class="about-section">
-            <h2>The Developer</h2>
-            <p>
-                I am a <span class="highlight">Computer Engineering student</span> at Selçuk University, 
-                blending technical engineering with creative game design. 
-                Focused on <span class="highlight">Full-Stack Game Development</span>, I build 
-                engaging mobile experiences and complex simulation systems.
-            </p>
-        </section>
+        
+        <h2>Technical Arsenal</h2>
+        <div class="skills-grid">
+            <div class="skill-box">
+                <h4>Languages</h4>
+                <ul class="skill-list">
+                    <li>C# (Unity Engine) <span class="level">Advanced</span></li>
+                    <li>C / C++ (Academic) <span class="level">Intermediate</span></li>
+                    <li>Java / Kotlin (Android) <span class="level">Intermediate</span></li>
+                    <li>Python <span class="level">Intermediate</span></li>
+                </ul>
+            </div>
+            
+            <div class="skill-box">
+                <h4>Publishing & Systems</h4>
+                <ul class="skill-list">
+                    <li>Google Play Console <span class="level">Active</span></li>
+                    <li>Ad Monetization (AdMob) <span class="level">Implemented</span></li>
+                    <li>Firebase Integration <span class="level">Proficient</span></li>
+                    <li>In-App Purchases / IAP</li>
+                </ul>
+            </div>
+
+            <div class="skill-box">
+                <h4>Communication</h4>
+                <ul class="skill-list">
+                    <li>Turkish <span class="level">Native</span></li>
+                    <li>English <span class="level">Professional</span></li>
+                    <li>Spanish <span class="level">Novice</span></li>
+                    <li>Dutch <span class="level">Novice</span></li>
+                </ul>
+            </div>
+        </div>
 
         <h2>Operations</h2>
         <div class="grid">
             <div class="project-item">
                 <h3>Zombie Survival</h3>
-                <p>A survival prototype featuring advanced AI systems including procedural hearing, vision, and scent detection. Built in Unity.</p>
-            </div>
-            <div class="project-item">
-                <h3>Flyter</h3>
-                <p>A unique mobile arcade experience with ad monetization, Firebase, and Google Play Games integration.</p>
+                <p>Advanced AI simulation including procedural senses (vision, hearing, smell). Developed as a technical showcase for immersive survival mechanics.</p>
             </div>
             <div class="project-item">
                 <h3>Project Alfred</h3>
-                <p>Custom AI assistant architecture featuring localized wake-word detection and integrated TTS systems.</p>
+                <p>Personalized AI assistant architecture with custom wake-word triggers and text-to-speech integration.</p>
+            </div>
+            <div class="project-item">
+                <h3>Full-Stack Dev</h3>
+                <p>Computer Engineering student at Selçuk University, specializing in both mobile front-end and robust back-end systems.</p>
             </div>
         </div>
 
@@ -243,6 +297,26 @@
             <a href="https://www.linkedin.com/in/canturan0/" class="social-link">LinkedIn</a>
         </div>
     </div>
+
+    <script>
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        const links = document.querySelectorAll('a, button, .project-item');
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(2.5)';
+                cursor.style.background = 'rgba(168, 85, 247, 0.4)';
+            });
+            link.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursor.style.background = 'var(--accent-purple)';
+            });
+        });
+    </script>
 
 </body>
 </html>
