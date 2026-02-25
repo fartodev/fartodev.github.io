@@ -139,7 +139,7 @@
         .card-subtitle { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
 
         .container { 
-            max-width: 1000px; 
+            max-width: 1100px; 
             margin: 0 auto; 
             padding: 80px var(--safe-padding);
             box-sizing: border-box;
@@ -147,7 +147,7 @@
 
         h2 { 
             font-size: 1.8rem; 
-            margin-bottom: 40px; 
+            margin: 60px 0 40px 0; 
             text-align: center; 
             text-transform: uppercase; 
             color: var(--accent-purple);
@@ -157,15 +157,14 @@
         /* Enhanced Skills Section */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 80px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
         }
 
         .skill-box {
             background: rgba(168, 85, 247, 0.03);
-            padding: 30px;
-            border-radius: 24px;
+            padding: 25px;
+            border-radius: 20px;
             border: 1px solid rgba(168, 85, 247, 0.1);
         }
 
@@ -173,17 +172,17 @@
             margin-top: 0; 
             color: var(--text-main); 
             text-transform: uppercase; 
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             border-bottom: 1px solid rgba(168, 85, 247, 0.2);
-            padding-bottom: 10px;
-            margin-bottom: 15px;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .skill-list { list-style: none; padding: 0; margin: 0; color: var(--text-dim); font-size: 0.85rem; }
-        .skill-list li { margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;}
+        .skill-list li { margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;}
         .level { color: var(--accent-purple); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
 
-        /* Projects Grid */
+        /* Operations Grid */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .project-item {
             background: var(--card-bg);
@@ -197,7 +196,33 @@
         .project-item h3 { margin: 0 0 12px 0; color: var(--accent-purple); font-size: 1.2rem; }
         .project-item p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; }
 
-        .socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; padding: 80px 0; }
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            padding: 60px 0;
+            margin-top: 40px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: var(--accent-purple);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(168, 85, 247, 0.5);
+        }
+
+        .socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; padding: 40px 0; }
         .social-link { color: var(--text-dim); text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; transition: 0.3s; }
         .social-link:hover { color: var(--accent-purple); }
 
@@ -245,32 +270,42 @@
         <h2>Technical Arsenal</h2>
         <div class="skills-grid">
             <div class="skill-box">
-                <h4>Languages</h4>
+                <h4>Software Engineering</h4>
                 <ul class="skill-list">
                     <li>C# (Unity Engine) <span class="level">Advanced</span></li>
-                    <li>C / C++ (Academic) <span class="level">Intermediate</span></li>
-                    <li>Java / Kotlin (Android) <span class="level">Intermediate</span></li>
-                    <li>Python <span class="level">Intermediate</span></li>
+                    <li>C / C++ <span class="level">Academic</span></li>
+                    <li>Java / Kotlin <span class="level">Intermediate</span></li>
+                    <li>Git / GitHub <span class="level">Version Control</span></li>
                 </ul>
             </div>
             
             <div class="skill-box">
-                <h4>Publishing & Systems</h4>
+                <h4>Creative & Tools</h4>
                 <ul class="skill-list">
-                    <li>Google Play Console <span class="level">Active</span></li>
-                    <li>Ad Monetization (AdMob) <span class="level">Implemented</span></li>
-                    <li>Firebase Integration <span class="level">Proficient</span></li>
-                    <li>In-App Purchases / IAP</li>
+                    <li>Photoshop <span class="level">Asset Creation</span></li>
+                    <li>Blender <span class="level">3D Modeling</span></li>
+                    <li>VS / VSCode <span class="level">IDEs</span></li>
+                    <li>Android Studio <span class="level">Mobile Dev</span></li>
                 </ul>
             </div>
 
             <div class="skill-box">
-                <h4>Communication</h4>
+                <h4>Operations</h4>
                 <ul class="skill-list">
-                    <li>Turkish <span class="level">Native</span></li>
+                    <li>Google Play Console <span class="level">Published</span></li>
+                    <li>Ad Monetization (AdMob) <span class="level">Live</span></li>
+                    <li>Firebase Integration <span class="level">Proficient</span></li>
+                    <li>IAP / Play Games SDK</li>
+                </ul>
+            </div>
+
+            <div class="skill-box">
+                <h4>Collaboration</h4>
+                <ul class="skill-list">
+                    <li>Game Jams <span class="level">Divizyon Jam</span></li>
+                    <li>Teamwork <span class="level">Agile Projects</span></li>
                     <li>English <span class="level">Professional</span></li>
-                    <li>Spanish <span class="level">Novice</span></li>
-                    <li>Dutch <span class="level">Novice</span></li>
+                    <li>Turkish <span class="level">Native</span></li>
                 </ul>
             </div>
         </div>
@@ -279,7 +314,7 @@
         <div class="grid">
             <div class="project-item">
                 <h3>Zombie Survival</h3>
-                <p>Advanced AI simulation including procedural senses (vision, hearing, smell). Developed as a technical showcase for immersive survival mechanics.</p>
+                <p>Advanced AI simulation including procedural senses (vision, hearing, smell). A technical showcase for immersive survival mechanics.</p>
             </div>
             <div class="project-item">
                 <h3>Project Alfred</h3>
@@ -287,15 +322,19 @@
             </div>
             <div class="project-item">
                 <h3>Full-Stack Dev</h3>
-                <p>Computer Engineering student at Selçuk University, specializing in both mobile front-end and robust back-end systems.</p>
+                <p>Computer Engineering student specializing in scalable mobile experiences and performance-driven back-end systems.</p>
             </div>
         </div>
 
-        <div class="socials">
-            <a href="https://github.com/fartodev" class="social-link">GitHub</a>
-            <a href="https://fartodev.itch.io/" class="social-link">Itch.io</a>
-            <a href="https://www.linkedin.com/in/canturan0/" class="social-link">LinkedIn</a>
-        </div>
+        <section class="contact-section">
+            <h2>Get in Touch</h2>
+            <a href="mailto:canturan.dev@gmail.com" class="contact-btn">Send an Email</a>
+            <div class="socials">
+                <a href="https://github.com/fartodev" class="social-link">GitHub</a>
+                <a href="https://fartodev.itch.io/" class="social-link">Itch.io</a>
+                <a href="https://www.linkedin.com/in/canturan0/" class="social-link">LinkedIn</a>
+            </div>
+        </section>
     </div>
 
     <script>
@@ -305,7 +344,7 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        const links = document.querySelectorAll('a, button, .project-item');
+        const links = document.querySelectorAll('a, button, .project-item, .skill-box');
         links.forEach(link => {
             link.addEventListener('mouseenter', () => {
                 cursor.style.transform = 'scale(2.5)';
