@@ -48,7 +48,7 @@
         }
 
         h1 {
-            font-size: clamp(3rem, 12vw, 5.5rem);
+            font-size: clamp(3.5rem, 12vw, 6rem);
             font-weight: 900;
             margin: 0;
             letter-spacing: -3px;
@@ -60,10 +60,10 @@
             color: var(--text-dim);
             letter-spacing: 5px;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        /* Play Card with Re-added Play Icon */
+        /* Play Card */
         .play-card {
             display: flex;
             align-items: center;
@@ -77,7 +77,7 @@
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-            width: 300px; /* Fixed width for consistency */
+            width: 320px;
         }
 
         .play-card:hover {
@@ -96,7 +96,7 @@
 
         .card-text {
             text-align: left;
-            flex-grow: 1; /* Pushes the SVG to the right */
+            flex-grow: 1;
         }
 
         .card-title {
@@ -121,12 +121,30 @@
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 80px 20px;
+            padding: 100px 20px;
+        }
+
+        .about-section {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .about-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-dim);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .highlight {
+            color: var(--text-main);
+            font-weight: 700;
         }
 
         h2 {
-            font-size: 2rem;
-            margin-bottom: 40px;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
             text-align: center;
             letter-spacing: -1px;
         }
@@ -134,13 +152,13 @@
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
 
         .project-item {
             background: var(--card-bg);
-            padding: 30px;
-            border-radius: 16px;
+            padding: 35px;
+            border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.05);
             transition: 0.3s;
         }
@@ -148,16 +166,18 @@
         .project-item:hover {
             border-color: rgba(255,255,255,0.2);
             background: rgba(255,255,255,0.08);
+            transform: translateY(-5px);
         }
 
         .project-item h3 {
-            margin: 0 0 10px 0;
+            margin: 0 0 12px 0;
             color: var(--accent-blue);
+            font-size: 1.3rem;
         }
 
         .project-item p {
             color: var(--text-dim);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             line-height: 1.6;
         }
 
@@ -165,9 +185,9 @@
         .socials {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 50px;
-            padding-bottom: 80px;
+            gap: 40px;
+            margin-top: 80px;
+            padding-bottom: 100px;
         }
 
         .social-link {
@@ -177,6 +197,7 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             transition: 0.3s;
+            letter-spacing: 1px;
         }
 
         .social-link:hover {
@@ -185,7 +206,8 @@
 
         @media (max-width: 600px) {
             h1 { font-size: 3.5rem; }
-            .play-card { width: 80%; padding: 12px 20px; }
+            .play-card { width: 85%; padding: 14px 22px; }
+            .about-section p { font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -197,7 +219,7 @@
         </video>
 
         <h1>FartoDev</h1>
-        <p class="tagline">Game Studio</p>
+        <p class="tagline">Indie Game Studio</p>
 
         <a href="https://play.google.com/store/apps/details?id=com.FartoDev.Flyter" class="play-card">
             <img src="icon.png" alt="Flyter" class="card-icon">
@@ -212,26 +234,37 @@
     </section>
 
     <div class="container">
-        <h2>Other Projects</h2>
+        
+        <section class="about-section">
+            <h2>The Developer</h2>
+            <p>
+                I am a <span class="highlight">Computer Engineering student</span> at Selçuk University, 
+                blending technical engineering principles with creative game design. 
+                Focused on <span class="highlight">Full-Stack Game Development</span>, I build 
+                scalable mobile experiences and complex simulation systems.
+            </p>
+        </section>
+
+        <h2>Operations</h2>
         <div class="grid">
             <div class="project-item">
                 <h3>Zombie Survival</h3>
-                <p>An immersive survival experience featuring advanced AI senses including hearing, sight, and smell. Built with Unity.</p>
+                <p>A survival prototype featuring advanced AI systems including procedural hearing, vision, and scent detection mechanics. Built in Unity.</p>
             </div>
             <div class="project-item">
                 <h3>Flight Fury</h3>
-                <p>Mobile arcade combat where precision is everything. Available on Itch.io as a downloadable APK.</p>
+                <p>Fast-paced mobile arcade combat emphasizing mechanical skill and precision movement. Released on Itch.io.</p>
             </div>
             <div class="project-item">
                 <h3>Project Alfred</h3>
-                <p>A personal AI assistant integration involving custom wake words and text-to-speech systems.</p>
+                <p>Custom AI assistant architecture featuring localized wake-word detection and integrated TTS systems.</p>
             </div>
         </div>
 
         <div class="socials">
             <a href="https://github.com/fartodev" class="social-link">GitHub</a>
             <a href="https://fartodev.itch.io/" class="social-link">Itch.io</a>
-            <a href="https://www.linkedin.com/in/canturan0" class="social-link">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/canturan0/" class="social-link">LinkedIn</a>
         </div>
     </div>
 
