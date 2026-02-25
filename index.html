@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FartoDev | Indie Game Developer</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg-color: #0a0a0c;
-            --accent-color: #ff4d4d; /* Dynamic Red for 'Flyter' vibe */
+            --accent-blue: #3bccff; /* Google Play Blue */
             --text-main: #ffffff;
             --text-dim: #a0a0a0;
         }
@@ -20,10 +22,10 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
-        /* Video Background Container */
+        /* Hero & Video Background */
         .hero-container {
             position: relative;
             width: 100%;
@@ -33,7 +35,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(45deg, #0a0a0c, #1a1a2e); /* Fallback */
+            background: radial-gradient(circle, #1a1a2e 0%, #0a0a0c 100%);
         }
 
         .video-bg {
@@ -44,88 +46,128 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
-            opacity: 0.4; /* Darkens video so text is readable */
+            opacity: 0.35; /* Keeps text readable */
         }
 
-        /* Typography */
+        /* Branding */
         h1 {
-            font-size: 4rem;
+            font-size: clamp(3rem, 10vw, 5rem);
             font-weight: 900;
             margin: 0;
-            letter-spacing: -2px;
+            letter-spacing: -3px;
             text-transform: uppercase;
         }
 
         .tagline {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: var(--text-dim);
-            margin-top: 10px;
-            letter-spacing: 2px;
+            margin-top: 5px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
         }
 
-        .game-title {
-            margin-top: 40px;
-            padding: 10px 20px;
-            border-left: 3px solid var(--accent-color);
-            background: rgba(255, 255, 255, 0.05);
-            font-style: italic;
-        }
-
-        /* Buttons/Links */
-        .cta-container {
-            margin-top: 50px;
-        }
-
-        .btn {
+        /* The "Google Play" Style Card */
+        .play-card {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 16px 24px;
             text-decoration: none;
             color: white;
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 12px 30px;
-            transition: 0.3s;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-top: 40px;
+            width: 300px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .play-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--accent-blue);
+        }
+
+        .card-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 12px;
+            margin-right: 16px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .card-text {
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            display: block;
+            font-weight: 800;
+            font-size: 1.3rem;
+            line-height: 1.1;
+        }
+
+        .card-subtitle {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--accent-blue);
+            font-weight: 700;
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+
+        /* Footer / Links */
+        .footer-links {
+            position: absolute;
+            bottom: 40px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .link-item {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            transition: 0.3s;
         }
 
-        .btn:hover {
-            background: white;
-            color: black;
-        }
-
-        /* Simple Footer */
-        footer {
-            position: absolute;
-            bottom: 30px;
-            width: 100%;
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-dim);
+        .link-item:hover {
+            color: white;
         }
     </style>
 </head>
 <body>
 
     <div class="hero-container">
-        <video autoplay muted loop playsinline class="video-bg" id="bgVideo">
+        <video autoplay muted loop playsinline class="video-bg">
             <source src="gameplay.mp4" type="video/mp4">
         </video>
 
         <h1>FartoDev</h1>
-        <p class="tagline">INDIE GAME DEVELOPER</p>
+        <p class="tagline">Game Studio</p>
 
-        <div class="game-title">
-            FLYTER — "Kendini roket sanan çakmak"
-        </div>
+        <a href="https://play.google.com/store/apps/details?id=com.FartoDev.Flyter" class="play-card">
+            <img src="icon.png" alt="Flyter Icon" class="card-icon">
+            <div class="card-text">
+                <span class="card-title">FLYTER</span>
+                <span class="card-subtitle">Play — Google Play</span>
+            </div>
+            <div class="play-badge">
+                <svg viewBox="0 0 512 512" width="22" fill="#3bccff"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-10.3 18-28.5-1.2-40.8zM325.3 277.7l-60.1 60.1L104.6 499l280.8-161.2-60.1-60.1z"/></svg>
+            </div>
+        </a>
 
-        <div class="cta-container">
-            <a href="https://github.com/fartodev" class="btn">GitHub</a>
-            <a href="#" class="btn" style="margin-left:10px;">Play Games</a>
+        <div class="footer-links">
+            <a href="https://github.com/fartodev" class="link-item">GitHub</a>
+            <a href="https://fartodev.itch.io/" class="link-item">Itch.io</a>
         </div>
     </div>
-
-    <footer>
-        &copy; 2026 FartoDev. Built with passion.
-    </footer>
 
 </body>
 </html>
