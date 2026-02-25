@@ -1,2 +1,131 @@
-<h1>FartoDev</h1>
-<p>FLYTER - Kendini roket sanan çakmak.</p>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FartoDev | Indie Game Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0c;
+            --accent-color: #ff4d4d; /* Dynamic Red for 'Flyter' vibe */
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* Video Background Container */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(45deg, #0a0a0c, #1a1a2e); /* Fallback */
+        }
+
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.4; /* Darkens video so text is readable */
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+
+        .game-title {
+            margin-top: 40px;
+            padding: 10px 20px;
+            border-left: 3px solid var(--accent-color);
+            background: rgba(255, 255, 255, 0.05);
+            font-style: italic;
+        }
+
+        /* Buttons/Links */
+        .cta-container {
+            margin-top: 50px;
+        }
+
+        .btn {
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 12px 30px;
+            transition: 0.3s;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .btn:hover {
+            background: white;
+            color: black;
+        }
+
+        /* Simple Footer */
+        footer {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-container">
+        <video autoplay muted loop playsinline class="video-bg" id="bgVideo">
+            <source src="gameplay.mp4" type="video/mp4">
+        </video>
+
+        <h1>FartoDev</h1>
+        <p class="tagline">INDIE GAME DEVELOPER</p>
+
+        <div class="game-title">
+            FLYTER — "Kendini roket sanan çakmak"
+        </div>
+
+        <div class="cta-container">
+            <a href="https://github.com/fartodev" class="btn">GitHub</a>
+            <a href="#" class="btn" style="margin-left:10px;">Play Games</a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 FartoDev. Built with passion.
+    </footer>
+
+</body>
+</html>
