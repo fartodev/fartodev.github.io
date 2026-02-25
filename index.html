@@ -4,29 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FartoDev | Indie Game Developer</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --bg-color: #0a0a0c;
-            --accent-blue: #3bccff; /* Google Play Blue */
+            --accent-blue: #3bccff;
             --text-main: #ffffff;
             --text-dim: #a0a0a0;
+            --card-bg: rgba(255, 255, 255, 0.05);
         }
 
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            overflow: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* Hero & Video Background */
-        .hero-container {
+        /* Hero Section */
+        .hero {
             position: relative;
             width: 100%;
             height: 100vh;
@@ -35,7 +34,6 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: radial-gradient(circle, #1a1a2e 0%, #0a0a0c 100%);
         }
 
         .video-bg {
@@ -46,12 +44,11 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
-            opacity: 0.35; /* Keeps text readable */
+            opacity: 0.3;
         }
 
-        /* Branding */
         h1 {
-            font-size: clamp(3rem, 10vw, 5rem);
+            font-size: clamp(3rem, 12vw, 5.5rem);
             font-weight: 900;
             margin: 0;
             letter-spacing: -3px;
@@ -59,93 +56,131 @@
         }
 
         .tagline {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--text-dim);
-            margin-top: 5px;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
-        /* The "Google Play" Style Card */
+        /* Play Card with Hover Glow */
         .play-card {
             display: flex;
             align-items: center;
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
-            padding: 16px 24px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 16px 28px;
             text-decoration: none;
             color: white;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            margin-top: 40px;
-            width: 300px;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
         }
 
         .play-card:hover {
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-5px) scale(1.02);
+            transform: translateY(-8px) scale(1.03);
+            background: rgba(255, 255, 255, 0.1);
             border-color: var(--accent-blue);
-            box-shadow: 0 0 20px rgba(60, 204, 255, 0.2);
+            box-shadow: 0 0 30px rgba(60, 204, 255, 0.3);
         }
 
         .card-icon {
-            width: 54px;
-            height: 54px;
-            border-radius: 12px;
-            margin-right: 16px;
-            object-fit: cover;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-
-        .card-text {
-            text-align: left;
-            flex-grow: 1;
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            margin-right: 18px;
         }
 
         .card-title {
             display: block;
-            font-weight: 800;
-            font-size: 1.3rem;
-            line-height: 1.1;
+            font-weight: 900;
+            font-size: 1.4rem;
         }
 
         .card-subtitle {
-            display: block;
             font-size: 0.75rem;
             color: var(--accent-blue);
             font-weight: 700;
-            margin-top: 4px;
             text-transform: uppercase;
         }
 
-        /* Footer / Links */
-        .footer-links {
-            position: absolute;
-            bottom: 40px;
-            display: flex;
+        /* Content Sections */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            letter-spacing: -1px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
 
-        .link-item {
+        .project-item {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+        }
+
+        .project-item:hover {
+            border-color: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .project-item h3 {
+            margin: 0 0 10px 0;
+            color: var(--accent-blue);
+        }
+
+        .project-item p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Social Links Section */
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .social-link {
             color: var(--text-dim);
             text-decoration: none;
-            font-size: 0.8rem;
             font-weight: 700;
+            font-size: 0.85rem;
             text-transform: uppercase;
             transition: 0.3s;
         }
 
-        .link-item:hover {
-            color: white;
+        .social-link:hover {
+            color: var(--accent-blue);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 3.5rem; }
+            .play-card { width: 85%; }
         }
     </style>
 </head>
 <body>
 
-    <div class="hero-container">
+    <section class="hero">
         <video autoplay muted loop playsinline class="video-bg">
             <source src="gameplay.mp4" type="video/mp4">
         </video>
@@ -154,20 +189,35 @@
         <p class="tagline">Game Studio</p>
 
         <a href="https://play.google.com/store/apps/details?id=com.FartoDev.Flyter" class="play-card">
-            <img src="icon.png" alt="Flyter Icon" class="card-icon">
+            <img src="icon.png" alt="Flyter" class="card-icon">
             <div class="card-text">
                 <span class="card-title">FLYTER</span>
-                <span class="card-subtitle">Play — Google Play</span>
-            </div>
-            <div class="play-badge">
-                <svg viewBox="0 0 512 512" width="22" fill="#3bccff"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-10.3 18-28.5-1.2-40.8zM325.3 277.7l-60.1 60.1L104.6 499l280.8-161.2-60.1-60.1z"/></svg>
+                <span class="card-subtitle">GET IT ON GOOGLE PLAY</span>
             </div>
         </a>
+    </section>
 
-        <div class="footer-links">
-            <a href="https://github.com/fartodev" class="link-item">GitHub</a>
-            <a href="https://fartodev.itch.io/" class="link-item">Itch.io</a>
-            <a href="https://www.linkedin.com/in/canturan0/" class="link-item">LinkedIn</a>
+    <div class="container">
+        <h2>Other Projects</h2>
+        <div class="grid">
+            <div class="project-item">
+                <h3>Zombie Survival</h3>
+                <p>An immersive survival experience featuring advanced AI senses including hearing, sight, and smell. Built with Unity.</p>
+            </div>
+            <div class="project-item">
+                <h3>Flight Fury</h3>
+                <p>Mobile arcade combat. High-speed action where precision is everything. Available on Itch.io.</p>
+            </div>
+            <div class="project-item">
+                <h3>Project Alfred</h3>
+                <p>A personal AI assistant integration involving custom wake words and text-to-speech systems.</p>
+            </div>
+        </div>
+
+        <div class="socials">
+            <a href="https://github.com/fartodev" class="social-link">GitHub</a>
+            <a href="https://fartodev.itch.io/" class="social-link">Itch.io</a>
+            <a href="https://www.linkedin.com/in/canturan0" class="social-link">LinkedIn</a>
         </div>
     </div>
 
